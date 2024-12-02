@@ -1,14 +1,15 @@
-import { Client, Databases, Account } from 'appwrite';
+import { Client, Account, Databases } from 'appwrite';
 
-export const PROJECT_ID = '674c20e6001be1f7237b'
-export const DATABASE_ID = '674c21df000b3ae903bf'
-export const COLLECTION_ID_MESSAGES = '674c21eb0031b8a307e7'
+export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT
+export const PROJECT_ID = import.meta.env.VITE_PROJECT_ID
+export const DATABASE_ID = import.meta.env.VITE_DATABASE_ID
+export const COLLECTION_ID_MESSAGES = import.meta.env.VITE_COLLECTION_ID_MESSAGES
 
-const client = new Client();
-client.setEndpoint('https://cloud.appwrite.io/v1')
-client.setProject('674c20e6001be1f7237b');
+const client = new Client()
+    .setEndpoint(API_ENDPOINT) 
+    .setProject(PROJECT_ID);    
 
-export const databases = new Databases(client);
 export const account = new Account(client);
+export const databases = new Databases(client)
 
 export default client;
